@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-container > .search-outline {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid lightgrey;
+  padding: 5px 10px;
+  margin: 10px 0;
+  border-radius: 20px;
+  width: 30%;
+  text-indent: 10px;
+}
+.search-container > .search-input {
+  padding: 2px;
+  margin: 0 5px;
+}
+.search-input {
+  outline: none;
+}
+.restraunt-list {
+  display: flex;
+  flex-wrap: wrap;
+  
+  margin-top: 5%;
+  align-items: center;
+  justify-content: center;
+}
+.restraunt-list > .restraunt-link {
+  height: 25%;
+  width: 20%;
+  padding: 10px;
+  margin: 10px;
+  box-sizing: content-box;
+  transition: transform 0.3s;
+  text-decoration: none;
+  color: black;
+}
+.restraunt-list > .shimmer-card {
+  height: 250px;
+  width: 20%;
+  padding: 10px;
+  margin: 10px;
+  background-color: lightgray;
+}
+
+.restraunt-card > .res-heading {
+  font-size: 18px;
+  font-weight: 600;
+  word-break: break-word;
+  margin-top: 5px;
+}
+.restraunt-card > .res-cuisines {
+  font-size: 15px;
+  font-weight: 300;
+  word-break: break-word;
+  color: lightslategray;
+  margin-top: 5px;
+}
+.restraunt-card > .res-card-footer {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  font-size: small;
+  padding-bottom: 10px;
+  color: lightslategray;
+}
+.restraunt-card > .res-card-footer > .res-rating {
+  display: flex;
+  align-items: center;
+  margin-right: 10%;
+  font-weight: 200;
+  color: #fff;
+  padding: 3.5px;
+}
+.restraunt-card > .res-card-footer > .res-distance {
+  margin-right: 10%;
+}
+.good-rating {
+  background-color: green;
+}
+.average-rating {
+  background-color: #db7c38;
+}
+.quick-view {
+  display: none;
+}
+.restraunt-link:hover {
+  border: 1px solid lightgray;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transform: scale(1.05);
+}
+.restraunt-card:hover > .res-card-footer {
+  border-bottom: 1px solid lightgray;
+}
+.restraunt-card:hover > .quick-view {
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5d8ed5;
+  font-weight: 800;
+  font-size: small;
+}
+.restraunt-card > img {
+  height: 75%;
+  width: 100%;
+}
+.shimmer {
+  background: lightgray;
+  height: 270px;
+  width: 230px;
+}
+
+/* Notification */
+.notification{
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  width: max-content;
+  padding: 20px 15px;
+  border-radius: 4px;
+  
+  
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(30px);
+  animation: fade-in 4s linear forwards;
+}
+.notification_progress{
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  width: calc(100% - 10px);
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background-color:  rgb(14, 116, 54);
+  border-radius: inherit;
+  animation: load 3s 0.25s linear forwards;
+}
+@keyframes fade-in{
+  5%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90%{
+    opacity: 1;
+    transform: translateY(0);
+
+  }
+}
+@keyframes  load {
+  to{
+    transform: scaleX(1);
+  }
+  
+}
