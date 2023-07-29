@@ -12,7 +12,7 @@ const Cart = () => {
  const dispatch = useDispatch();
   const handleClearCart = () => {
     dispatch(clearCart());
-    localStorage.clear();
+     
   };
 
  const handlePlaceOrder =()=>{

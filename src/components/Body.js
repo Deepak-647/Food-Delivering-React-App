@@ -17,14 +17,14 @@ const Body = () => {
 
   async function getRestraunts() {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559"
     );
      
     const json = await data.json();
     
-    // console.log("data",json?.data?.cards[2]?.data?.data?.cards)
-    setAllRestraunts(json?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestraunts(json?.data?.cards[2]?.data?.data?.cards);
+    console.log("data",json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setAllRestraunts(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestraunts(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
  
    const isOnline = useOnline();
@@ -65,10 +65,10 @@ const Body = () => {
           return (
             <Link
               className="restraunt-link"
-              to={"/restaurant/" + restraunt.data.id}
-              key={restraunt.data.id}
+              to={"/restaurant/" + restraunt.info.id}
+              key={restraunt.info.id}
             >
-              <RestrauntCard data={restraunt.data} />
+              <RestrauntCard data={restraunt.info} />
             </Link>
           );
         })}
