@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 import { BiSolidOffer } from "react-icons/bi";
 import { BsFillInfoSquareFill } from "react-icons/bs";
 import { IoMdHelpBuoy } from "react-icons/io";
-
+ import {fetchCoords} from '../utils/coordsSlice';
+ import { setLatitude,setLongitude } from "../utils/coordsSlice";
 import { BsFillCartFill } from "react-icons/bs";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import SearchCity from "./SearchCity";
+import { useEffect, useState } from "react";
 
 const Title = () => (
   <div className="flex items-center">
@@ -24,13 +27,44 @@ const Title = () => (
 
 const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
-  // if (cartItems.length > 0) {
-  //   console.log("cartitems", cartItems);
-  // }
+  const dispatch =useDispatch();
+  const {latitude,longitude,searchedCity} = useSelector(
+    (store) => store.coords
+  );
+  const [city,setCity] =useState("");
+  
+  const searchRestaurants = ()=>{
+    dispatch(fetchCoords(city));
+    setCity("")
+  }
+
+  //fetching the current coordiantes
+  const getCurrCoords = ()=>{
+    if("geolocation" in navigator && latitude==null && longitude==null){
+      navigator.geolocation.getCurrentPosition(
+        (position)=>{
+        dispatch(setLatitude(position.coords.latitude));
+        dispatch(setLongitude(position.coords.longitude));
+      },(error)=>{
+        console.log("Error",error)
+      })
+    }else{
+      console.error("Geolocation is not supported by this browser.");
+    }
+  }
+
+  useEffect(()=>{
+    getCurrCoords();
+  },[])
+
   return (
     <div className="flex items-center justify-between border py-2">
-      <div>
+      <div className="flex items-center">
         <Title />
+        <SearchCity searchRestaurants={searchRestaurants}
+        setCity={setCity} 
+        city={city}/>
+        
       </div>
       <div className="mx-6">
         <ul className="flex">
