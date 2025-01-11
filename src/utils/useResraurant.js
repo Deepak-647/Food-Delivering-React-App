@@ -16,9 +16,9 @@ const useRestaurant = (resId)=>{
       );
       const json = await data.json();
       console.log(json.data);
-      setRestaurantInfo(json?.data?.cards?.[0]?.card?.card?.info);
+      setRestaurantInfo(json?.data?.cards?.[2]?.card?.card?.info);
       setRestaurantMenu(
-        json?.data?.cards?.[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+        json?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
       );
     } catch (error) {
       console.error("Error fetching restaurant info:", error);
