@@ -79,9 +79,9 @@ const RestaurantDetails = () => {
           <p className="text-base font-bold">{costForTwoMessage}</p>
         </div>
         <div className="flex items-center">
-          {descriptionList.map((description) => {
+          {descriptionList.map((description,index) => {
             return (
-              <div className="flex  items-center border p-2 w-60 text-sm m-2">
+              <div key={index} className="flex  items-center border p-2 w-60 text-sm m-2">
                 <CiDiscount1 style={{ color: "brown", fontSize: "40px" }} />{" "}
                 <p className="px-2 text-base font-medium text-gray-500">
                   {description?.meta}
