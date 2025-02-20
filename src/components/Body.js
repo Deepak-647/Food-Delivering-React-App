@@ -14,7 +14,7 @@ const Body = () => {
   const[cityTitle,setCityTitle]=useState("");
   const [searchTxt, setSearchTxt] = useState("");
   const {latitude,longitude} =useSelector((store)=>store.coords);
-  console.log(latitude,longitude)
+  
 
 
   useEffect(() => {
@@ -29,11 +29,11 @@ const Body = () => {
      
     const json = await data.json();
     
-    console.log("data",json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-    setCityTitle(json?.data?.cards[2]?.card?.card?.header?.title);
+    // console.log("data",json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setCityTitle(json?.data?.cards[1]?.card?.card?.header?.title);
      
-    setAllRestraunts(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRestraunts(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setAllRestraunts(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestraunts(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
  
    const isOnline = useOnline();
